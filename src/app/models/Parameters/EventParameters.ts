@@ -2,7 +2,7 @@ import { FilterHandler } from "../FilterHandler";
 
 
 export class EventParameter implements FilterHandler{
-    titleStartsWith:string;
+    nameStartsWith:string;
     limit:string;
     offset:string;
     filterFunction:() => void = null;
@@ -12,8 +12,8 @@ export class EventParameter implements FilterHandler{
         this.limit = limit ? limit : '16';
     }   
     
-    setName(titleStartsWith:string) {
-        this.titleStartsWith = titleStartsWith;
+    setName(nameStartsWith:string) {
+        this.nameStartsWith = nameStartsWith;
     }
 
     resetIndex(){

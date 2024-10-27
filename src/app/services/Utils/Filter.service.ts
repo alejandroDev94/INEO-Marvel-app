@@ -22,7 +22,7 @@ import { ComicsService } from "../api-marvel/Comic.service";
     setEventsTofilter(idsEvents:string[]) {
       this.characterService.getCharacterParameter().setEvents(idsEvents);
       this.characterService.getCharacterParameter().setComics(null);
-      this.comicsService.resetCheckedEvents();                    
+      this.comicsService.resetCheckedCommits();                    
       this.characterService.searchByFilter();
     }
   

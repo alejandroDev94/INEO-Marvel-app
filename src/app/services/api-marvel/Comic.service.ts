@@ -17,7 +17,7 @@ export class ComicsService  extends HttpParameters<ComicParameter>{
     comicUncheck$ = this.comicUnchecksSubject.asObservable();
 
 
-    resetCheckedEvents(){
+    resetCheckedCommits(){
       this.comicUnchecksSubject.next(true);      
     }
 

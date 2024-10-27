@@ -26,7 +26,7 @@ export class PopupService {
     // Auto cerrar después de 3 segundos (opcional)
     setTimeout(() => {
       this.close(componentRef);
-    }, 3000);
+    }, 15000);
   }
 
   close(componentRef: any) {

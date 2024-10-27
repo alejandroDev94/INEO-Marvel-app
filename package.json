@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^18.2.9",
     "@angular/platform-browser-dynamic": "^18.2.9",
     "@angular/router": "^18.2.9",
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "crypto-js": "^4.2.0",
     "md5": "^2.3.0",
@@ -32,12 +33,13 @@
     "@types/crypto-js": "^4.2.2",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^22.8.1",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "jasmine-core": "^5.x",
+    "jasmine-spec-reporter": "^7.x",
+    "karma": "^6.x",
+    "karma-chrome-launcher": "^3.x",
+    "karma-coverage": "^2.x",
+    "karma-jasmine": "^5.x",
+    "karma-jasmine-html-reporter": "^2.x",
     "typescript": "~5.4.2"
   }
 }

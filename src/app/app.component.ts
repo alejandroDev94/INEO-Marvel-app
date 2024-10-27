@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
                               this.characters = []
                             }
                             (this.characters = this.characters.concat(res.data.results));
-
+                            this.loading = false;
                           }
                         )
                       )                    
@@ -69,26 +69,17 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy{
     };
     
     this.observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !this.loading) {
         this.characterParameter.nextPage()
         this.searchSubject.next(false);
+        this.loading = true;
       }
     }, options);
 
     this.observer.observe(this.anchor.nativeElement);   
   }
 
-  filterComics(character:RestCharacter) {
-
-  }
-
-
-  filterEvents(character:RestCharacter) {
-    this.filters = character.getEventsNameCode();
-    // this.characterParameter.setEvents(filters)
-      
-  }
-
+  
   searchByName(){
     this.characters = [];
     this.characterParameter.resetIndex();

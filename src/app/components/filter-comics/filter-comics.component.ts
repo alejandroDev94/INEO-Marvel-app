@@ -21,7 +21,7 @@ export class filterComicsComponent implements OnInit{
   comics:RestComic[]=[];
   filter:ComicParameter = new ComicParameter('8');
 
-  private searchSubject = new BehaviorSubject<Boolean>(false);
+  searchSubject = new BehaviorSubject<Boolean>(false);
 
   constructor(private comicServic:ComicsService,private filterService:FilterService ) {
 
@@ -67,12 +67,14 @@ export class filterComicsComponent implements OnInit{
     this.searchSubject.next(false);
   }
 
-  seeMore(): void {    
+  seeMore(): void {  
+    this.comics = this.comics.filter(comic => comic.checked); 
     this.filter.nextPage();
     this.searchSubject.next(false);    
   }
 
   submit(){
+    console.log("El submit del filter ",event)
     const selectedOptions = this.comics.filter(option => option.checked);
     console.log('Selected Options:', selectedOptions);
     const ids:string[] = selectedOptions.map(item => item.id.toString())

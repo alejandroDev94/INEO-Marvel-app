@@ -12,19 +12,19 @@
 </nav>
 
 
-<div class="container-fluid mt-5">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-3">
+    <div class="col-12 col-lg-4 col-xl-3 mt-5">
       <h2>Filters</h2>
       <filter-comics></filter-comics>
       <filter-event></filter-event>
     </div>
-    <div class="col-9">
+    <div class="col-12 col-lg-8 col-xl-9 mt-5">
       <div class="container">
         <h1>Marvel characters</h1>
         
         <div class="row">
-          <div class="col-12 col-md-6 col-lg-3 mb-4" *ngFor="let character of characters; trackBy:trackByCharacter">
+          <div class="col-12 col-md-6 col-xl-3 mb-4" *ngFor="let character of characters; trackBy:trackByCharacter">
             <div class="card">
               <img class="card-img-top" [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
               <div class="card-body">

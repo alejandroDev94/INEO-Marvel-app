@@ -38,7 +38,6 @@ export class CharacterParameter implements FilterHandler{
         this.filterFunction();
     }
     
-
     nextPage() {
         this.offset = (Number(this.offset)+Number(this.limit)).toString();
     }

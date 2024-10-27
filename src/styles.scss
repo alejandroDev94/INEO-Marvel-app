@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+#accordionComics .accordion-button:not(.collapsed),
+#accordionEvents .accordion-button:not(.collapsed) {
+    color: #8b1925;
+    background-color: #ffeaec;
+}

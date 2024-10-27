@@ -39,7 +39,7 @@ export const ErrorResponseInterceptor:HttpInterceptorFn = (req,next) => {
 function handleErrorResponse(error: HttpErrorResponse,popupService: PopupService) {
     console.log('Error Http Intercepted',error);
     
-    popupService.showError(`Error status: ${error.status}, message: ${error.message}`);
+    popupService.showError(`Error status: ${error.error.code}, message: ${error.error.status}`);
 
     return throwError(() => `Error status: ${error.status}, message: ${error.message}`)
 }

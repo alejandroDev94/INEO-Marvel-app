@@ -1,17 +1,26 @@
 <div class="container ">
-    <h3>Filter by Comic</h3>
-    <form (ngSubmit)="submit()">
-        <input class="form-control me-2" (ngModelChange)="borrado($event)" (keyup.enter)="searchByName()" name="nameStartsWith" type="search" placeholder="Search by name" aria-label="Search" [(ngModel)]="filter.titleStartsWith">                    
-        <div class="form-check" *ngFor="let event of events;trackBy:trackByEvent">
-            <input class="form-check-input" type="checkbox" value="" [id]="event.id" [(ngModel)]="event.checked" name="comic.id">
-            <label class="form-check-label" [for]="event.id">
-                {{event.title}}
-            </label>
+  <div class="accordion" id="accordionEvents">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEvent" aria-controls="collapseEvent">
+            Filter by Event
+        </button>
+      </h2>
+      <div id="collapseEvent" class="accordion-collapse collapse" data-bs-parent="#accordionEvents">
+        <div class="accordion-body">
+            <form >
+                <input class="form-control mb-3" (ngModelChange)="borrado($event)" (keydown.enter)="searchByName()" name="nameStartsWith" type="search" placeholder="Search by event" aria-label="Search" [(ngModel)]="filter.nameStartsWith">                    
+                <div class="form-check" *ngFor="let event of events;trackBy:trackByEvent">
+                    <input class="form-check-input" type="checkbox" value="" [id]="event.id" [(ngModel)]="event.checked" name="comic.id">
+                    <label class="form-check-label" [for]="event.id">
+                        {{event.title}}
+                    </label>
+                </div>
+                <button class="btn btn-outline-secondary me-2 mt-2" (click)="seeMore()">View more</button> 
+                <button type="submit" class="btn btn-outline-danger mt-2" (click)="submit()">Apply</button> 
+            </form>   
         </div>
-        <button class="btn btn-secondary" (click)="seeMore()">See more</button>
-        <button type="submit" class="btn btn-primary">Search by</button>
-        
-    </form>
-    
+      </div>
+    </div>
+  </div>
 </div>
-  

@@ -1,17 +1,28 @@
 <div class="container ">
-    <h3>Filter by Comic</h3>
-    <form (ngSubmit)="submit()">
-        <input class="form-control me-2" (ngModelChange)="borrado($event)" (keyup.enter)="searchByName()" name="nameStartsWith" type="search" placeholder="Search by name" aria-label="Search" [(ngModel)]="filter.titleStartsWith">                    
-        <div class="form-check" *ngFor="let comic of comics;trackBy:trackByComic">
-            <input class="form-check-input" type="checkbox" value="" [id]="comic.id" [(ngModel)]="comic.checked" name="comic.id">
-            <label class="form-check-label" [for]="comic.id">
-                {{comic.title}}
-            </label>
+
+    <div class="accordion" id="accordionComics">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseComic" aria-expanded="false" aria-controls="collapseComic">
+                Filter by Comic
+            </button>
+          </h2>
+          <div id="collapseComic" class="accordion-collapse collapse" data-bs-parent="#accordionComics">
+            <div class="accordion-body">
+                <form >
+                    <input class="form-control mb-3" (ngModelChange)="borrado($event)" (keydown.enter)="searchByName()" name="nameStartsWith" type="search" placeholder="Search by comic" aria-label="Search" [(ngModel)]="filter.titleStartsWith">                    
+                    <div class="form-check" *ngFor="let comic of comics;trackBy:trackByComic">
+                        <input class="form-check-input" type="checkbox" value="" [id]="comic.id" [(ngModel)]="comic.checked" name="comic.id">
+                        <label class="form-check-label" [for]="comic.id">
+                            {{comic.title}}
+                        </label>
+                    </div>        
+                    <button class="btn btn-outline-secondary me-2 mt-2" (click)="seeMore()">View more</button>
+                    <button type="submit" class="btn btn-outline-danger mt-2" (click)="submit()">Apply</button>        
+                </form>
+            </div>
+          </div>
         </div>
-        <button class="btn btn-secondary" (click)="seeMore()">See more</button>
-        <button type="submit" class="btn btn-primary">Search by</button>
-        
-    </form>
-    
+      </div>
 </div>
   

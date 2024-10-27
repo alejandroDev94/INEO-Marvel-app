@@ -56,7 +56,7 @@ export class filterEventsComponent {
     if (event == "") {
       this.events = this.events.filter(events => events.checked)
       this.filter.resetIndex();
-      this.filter.titleStartsWith = null
+      this.filter.nameStartsWith = null
       this.searchSubject.next(false);      
     }    
   }
@@ -68,6 +68,7 @@ export class filterEventsComponent {
   }
 
   seeMore(): void {    
+    this.events = this.events.filter(events => events.checked)
     this.filter.nextPage();
     this.searchSubject.next(false);    
   }
