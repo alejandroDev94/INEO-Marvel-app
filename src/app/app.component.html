@@ -1,3 +1,5 @@
+
+<app-error-popup></app-error-popup>
 <!-- src/app/main/main.component.html -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -9,23 +11,37 @@
   </div>
 </nav>
 
-<div class="container mt-5">
-  <h1>Marvel characters</h1>
-  
+
+<div class="container-fluid mt-5">
   <div class="row">
-    <div class="col-12 col-md-6 col-lg-3 mb-4" *ngFor="let character of characters; trackBy:trackByCharacter">
-      <div class="card">
-        <img class="card-img-top" [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ character.name }}</h5>
-          <p class="card-text">{{ character.description }}</p>
-          <a href="#" class="btn btn-outline-danger">View more</a>
+    <div class="col-3">
+      <h2>Filters</h2>
+      <filter-comics></filter-comics>
+      <filter-event></filter-event>
+    </div>
+    <div class="col-9">
+      <div class="container">
+        <h1>Marvel characters</h1>
+        
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-3 mb-4" *ngFor="let character of characters; trackBy:trackByCharacter">
+            <div class="card">
+              <img class="card-img-top" [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="{{ character.name }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ character.name }}</h5>
+                <p class="card-text">{{ character.description }}</p>                
+              </div>
+            </div>
+          </div>
         </div>
+        <div #anchor></div> <!-- Last elemento to trigger the  -->
       </div>
     </div>
-  </div>
-  <div #anchor></div> <!-- Last elemento to trigger the  -->
+  </div>  
 </div>
+
+
+
 
 <footer class="footer mt-auto py-3 bg-light">
   <div class="container">

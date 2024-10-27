@@ -1,8 +1,16 @@
 import { HttpErrorResponse,  HttpInterceptorFn } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
 
-export const ErrorResponseInterceptor:HttpInterceptorFn = (req,next) => 
-    next(req).pipe(catchError(handleErrorResponse));
+import { inject } from "@angular/core";
+import { PopupService } from "../services/Utils/errorpopup/ErrorPopup.service";
+
+export const ErrorResponseInterceptor:HttpInterceptorFn = (req,next) => {
+
+    const popupService = inject(PopupService);
+    return next(req).pipe(catchError((error: HttpErrorResponse) => handleErrorResponse(error, popupService)));
+
+}
+    
 
 
 // Authorization Errors https://developer.marvel.com/documentation/authorization
@@ -28,7 +36,10 @@ export const ErrorResponseInterceptor:HttpInterceptorFn = (req,next) =>
 // 409 	Too many values sent to a multi-value list filter.
 // 409 	Invalid value passed to filter.
 
-function handleErrorResponse(error: HttpErrorResponse) {
+function handleErrorResponse(error: HttpErrorResponse,popupService: PopupService) {
     console.log('Error Http Intercepted',error);
+    
+    popupService.showError(`Error status: ${error.status}, message: ${error.message}`);
+
     return throwError(() => `Error status: ${error.status}, message: ${error.message}`)
 }

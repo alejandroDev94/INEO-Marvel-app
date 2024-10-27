@@ -1,0 +1,17 @@
+<div class="container ">
+    <h3>Filter by Comic</h3>
+    <form (ngSubmit)="submit()">
+        <input class="form-control me-2" (ngModelChange)="borrado($event)" (keyup.enter)="searchByName()" name="nameStartsWith" type="search" placeholder="Search by name" aria-label="Search" [(ngModel)]="filter.titleStartsWith">                    
+        <div class="form-check" *ngFor="let comic of comics;trackBy:trackByComic">
+            <input class="form-check-input" type="checkbox" value="" [id]="comic.id" [(ngModel)]="comic.checked" name="comic.id">
+            <label class="form-check-label" [for]="comic.id">
+                {{comic.title}}
+            </label>
+        </div>
+        <button class="btn btn-secondary" (click)="seeMore()">See more</button>
+        <button type="submit" class="btn btn-primary">Search by</button>
+        
+    </form>
+    
+</div>
+  
